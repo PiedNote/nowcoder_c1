@@ -1,5 +1,7 @@
 #-*- encoding=UTF-8 -*-
 import requests
+import random
+import re
 from bs4 import BeautifulSoup
 
 
@@ -62,8 +64,29 @@ def demo_set():
     setb = set((2, 3, 4))
     print seta
     print setb
-    seta.add(4)
-    print seta
+    print seta.intersection(setb), seta & setb
+    print seta.union(setb)
+
+
+def demo_random():
+    a = random.random()*100
+    b = random.randint(5, 50)
+    c = random.choice(range(0, 100, 3))
+    d = random.sample(range(5, 50), 4)
+    e = [1, 2, 4, 11, 32, 23, 14]
+    random.shuffle(e)
+    print a, b, c, d, e
+
+
+def demo_re():
+    str = 'abc123def12gh15'
+    p1 = re.compile('\d')
+    p2 = re.compile('[\d]+')
+    print p1.findall(str)
+    print p2.findall(str)
+    aa = 'yy1021-11-21ji-ew'
+    p3 = re.compile('\d{4}-\d{2}-\d{2}')
+    print p3.findall(aa)
 
 
 if __name__ == '__main__':
@@ -74,4 +97,6 @@ if __name__ == '__main__':
    # demo_buildinfunction()
    # demo_list()
    # demo_dict()
-    demo_set()
+   # demo_set()
+   # demo_random()
+    demo_re()
